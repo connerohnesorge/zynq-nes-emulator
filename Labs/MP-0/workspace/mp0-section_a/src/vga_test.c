@@ -1,3 +1,4 @@
+
 /*****************************************************************************
  * Joseph Zambreno
  * Phillip Jones
@@ -23,31 +24,20 @@
 #include "xvtc.h"
 #include "xaxivdma.h"
 
+#include <stdio.h>
+#include "xil_printf.h"
+#include "xil_io.h"
+#include "inttypes.h"
+
 
 u16 test_image[480][640];
 
-int main() {
+#define VTC_CR (*(volatile u32 *)(XPAR_V_TC_0_BASEADDR))
+#define ENABLE_VTC 0x00000001  // Enable bit for VTC
 
+int main() {
 	XVtc Vtc;
     XVtc_Config *VtcCfgPtr;
-
-    UINTPTR LEDIn = 0x41200000;
-    UINTPTR SWIn = 0x41220000;
-    int32_t LEDOut = 0x00000001;
-
-    Xil_Out32(LEDIn, LEDOut);
-
-	/*
-    while (1) {
-
-	if ((Xil_In32(SWIn) & 0x00000001) == 0x00000001) {
-		LEDOut = LEDOut + 0x00000001;
-	}
-
-	Xil_Out32(LEDIn, LEDOut);
-	LEDOut = 0x00000000;
-
-	}*/
 
     int i, j;
 
@@ -60,7 +50,9 @@ int main() {
     // Challenge: Can you rewrite the Enable VTC module code by directly accessing
     // the VTC registers using pointers?  (See VTC data sheet, and xparameters.h)
 
-    // VTC_CR[0]   |=  ENABLE_VTC;    // You: Declare VTC_CR and ENABLE_VTC appropriately (before main() )
+    VTC_CR   |=  ENABLE_VTC;    // You: Declare VTC_CR and ENABLE_VTC appropriately (before main() )
+
+
 
     // Initialize Test image for VDMA transfer to VGA monitor
     for (i = 0; i < 480; i++) {
@@ -80,26 +72,19 @@ int main() {
     }
 
 	// Make sure Display information gets flushed from cache to DDR Memory
-    Xil_DCacheFlush();  
-    Xil_Out32(XPAR_AXI_VDMA_0_BASEADDR + 0x00, 0x8B);
-    Xil_Out32(XPAR_AXI_VDMA_0_BASEADDR + 0x5C, 0x10000000);
-    Xil_Out32(XPAR_AXI_VDMA_0_BASEADDR + 0x60, 0x100F0000);
-    Xil_Out32(XPAR_AXI_VDMA_0_BASEADDR + 0x64, 0x101E0000);
-    Xil_Out32(XPAR_AXI_VDMA_0_BASEADDR + 0x58, 800*2);
-    Xil_Out32(XPAR_AXI_VDMA_0_BASEADDR + 0x54, 800*2);
-    Xil_Out32(XPAR_AXI_VDMA_0_BASEADDR + 0x50, 600);
+    Xil_DCacheFlush();
+
     // Set up VDMA config registers
-	#define CHANGE_ME 0x8B
+	//#define CHANGE_ME 0
 
     // Simple function abstraction by Vendor for writing VDMA registers
-    XAxiVdma_WriteReg(XPAR_AXI_VDMA_0_BASEADDR, XAXIVDMA_CR_OFFSET,  CHANGE_ME);  // Read Channel: VDMA MM2S Circular Mode and Start bits set, VDMA MM2S Control
-    XAxiVdma_WriteReg(XPAR_AXI_VDMA_0_BASEADDR, XAXIVDMA_HI_FRMBUF_OFFSET, CHANGE_ME);  // Read Channel: VDMA MM2S Reg_Index
-    XAxiVdma_WriteReg(XPAR_AXI_VDMA_0_BASEADDR, XAXIVDMA_MM2S_ADDR_OFFSET + XAXIVDMA_START_ADDR_OFFSET, CHANGE_ME);  // Read Channel: VDMA MM2S Frame buffer Start Addr 1
-    XAxiVdma_WriteReg(XPAR_AXI_VDMA_0_BASEADDR, XAXIVDMA_MM2S_ADDR_OFFSET + XAXIVDMA_STRD_FRMDLY_OFFSET, CHANGE_ME);  // Read Channel: VDMA MM2S FRM_Delay, and Stride
-    XAxiVdma_WriteReg(XPAR_AXI_VDMA_0_BASEADDR, XAXIVDMA_MM2S_ADDR_OFFSET + XAXIVDMA_HSIZE_OFFSET, CHANGE_ME);  // Read Channel: VDMA MM2S HSIZE
-    XAxiVdma_WriteReg(XPAR_AXI_VDMA_0_BASEADDR, XAXIVDMA_MM2S_ADDR_OFFSET + XAXIVDMA_VSIZE_OFFSET, CHANGE_ME);  // Read Channel: VDMA MM2S VSIZE  (Note: Also Starts VDMA transaction)
+    XAxiVdma_WriteReg(XPAR_AXI_VDMA_0_BASEADDR, XAXIVDMA_CR_OFFSET,  0x00000003);  // Read Channel: VDMA MM2S Circular Mode and Start bits set, VDMA MM2S Control
+    XAxiVdma_WriteReg(XPAR_AXI_VDMA_0_BASEADDR, XAXIVDMA_HI_FRMBUF_OFFSET, 0x0000001);  // Read Channel: VDMA MM2S Reg_Index
+    XAxiVdma_WriteReg(XPAR_AXI_VDMA_0_BASEADDR, XAXIVDMA_MM2S_ADDR_OFFSET + XAXIVDMA_START_ADDR_OFFSET, 0x00000003);  // Read Channel: VDMA MM2S Frame buffer Start Addr 1
+    XAxiVdma_WriteReg(XPAR_AXI_VDMA_0_BASEADDR, XAXIVDMA_MM2S_ADDR_OFFSET + XAXIVDMA_STRD_FRMDLY_OFFSET, 0x01000500);  // Read Channel: VDMA MM2S FRM_Delay, and Stride
+    XAxiVdma_WriteReg(XPAR_AXI_VDMA_0_BASEADDR, XAXIVDMA_MM2S_ADDR_OFFSET + XAXIVDMA_HSIZE_OFFSET, 0x000001E0);  // Read Channel: VDMA MM2S HSIZE
+    XAxiVdma_WriteReg(XPAR_AXI_VDMA_0_BASEADDR, XAXIVDMA_MM2S_ADDR_OFFSET + XAXIVDMA_VSIZE_OFFSET, 0x00000280);  // Read Channel: VDMA MM2S VSIZE  (Note: Also Starts VDMA transaction)
 
-    Xil_Out32(0x43000000,0x00000001);
 
     // Low-level register acess using pointers
     // Alternative approach for configuring VDMA registers: Instead of using the abstracted functions can you configure and start the VDMA using pointers to directly configure VDMA registers
@@ -112,15 +97,10 @@ int main() {
     // VDMA_MM2S_HSIZE[0]          = CHANGE_ME; // Read channel: VDMA MM2S HSIZE
     // VDMA_MM2S_VSIZE[0]          = CHANGE_ME; // Read channel: VDMA MM2S VSIZE  (Note: Also Starts VDMA transaction)
 
-	
-	
-	
-	
-	
     ////////////////////////////////////////////////////////////////
     // Xilinx clean up function
     ////////////////////////////////////////////////////////////////
     cleanup_platform();
-	
+
     return 0;
 }
