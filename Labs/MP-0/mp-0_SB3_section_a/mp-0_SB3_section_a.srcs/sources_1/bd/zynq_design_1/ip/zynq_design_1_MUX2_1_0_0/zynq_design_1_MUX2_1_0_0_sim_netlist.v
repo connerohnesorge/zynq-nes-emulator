@@ -1,10 +1,10 @@
 // Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
-// Date        : Fri Feb  7 20:30:22 2025
-// Host        : CO2041-06 running 64-bit major release  (build 9200)
+// Date        : Mon Feb 10 01:04:26 2025
+// Host        : CO2041-04 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
-//               c:/Users/jaxie963/temp/cpre488/Labs/MP-0/mp-0_SB3_section_a/mp-0_SB3_section_a.srcs/sources_1/bd/zynq_design_1/ip/zynq_design_1_MUX2_1_0_0/zynq_design_1_MUX2_1_0_0_sim_netlist.v
+//               c:/Users/Jaxie963/Temp/cpre488/Labs/MP-0/mp-0_SB3_section_a/mp-0_SB3_section_a.srcs/sources_1/bd/zynq_design_1/ip/zynq_design_1_MUX2_1_0_0/zynq_design_1_MUX2_1_0_0_sim_netlist.v
 // Design      : zynq_design_1_MUX2_1_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -12,8 +12,8 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CHECK_LICENSE_TYPE = "zynq_design_1_MUX2_1_0_0,MUX2_1,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* ip_definition_source = "module_ref" *) 
-(* x_core_info = "MUX2_1,Vivado 2020.1" *) 
+(* CHECK_LICENSE_TYPE = "zynq_design_1_MUX2_1_0_0,MUX2_1,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* IP_DEFINITION_SOURCE = "module_ref" *) 
+(* X_CORE_INFO = "MUX2_1,Vivado 2020.1" *) 
 (* NotValidForBitStream *)
 module zynq_design_1_MUX2_1_0_0
    (S,
@@ -30,7 +30,7 @@ module zynq_design_1_MUX2_1_0_0
   wire [3:0]in_1;
   wire [3:0]out_0;
 
-  zynq_design_1_MUX2_1_0_0_MUX2_1 U0
+  zynq_design_1_MUX2_1_0_0_MUX2_1 inst
        (.S(S),
         .in_0(in_0),
         .in_1(in_1),
