@@ -16,24 +16,36 @@ entity PPM_v1_0_S00_AXI is
 	);
 	port (
 		-- Users to add ports here
-        slv_reg20_out : out std_logic_vector(31 downto 0);
-        slv_reg21_out : out std_logic_vector(31 downto 0);
-        slv_reg22_out : out std_logic_vector(31 downto 0);
-        slv_reg23_out : out std_logic_vector(31 downto 0);
-        slv_reg24_out : out std_logic_vector(31 downto 0);
-        slv_reg25_out : out std_logic_vector(31 downto 0);
-        PPM_Done : in std_logic;
-        sw_PPM_Output : in std_logic;
+		
+        -----------------
+		-- User Inputs --
+		-----------------
+		PPM_input_controller : in std_logic;
+		
+		-- Generate RTL and S00 inputs --
+		PPM_generator_done : in std_logic;
+		PPM_generator_input : in std_logic;
+		
+		-- Capture RTL and S00 inputs --
+		PPM_capture_input_0 : in std_logic_vector (31 downto 0);
+		PPM_capture_input_1 : in std_logic_vector (31 downto 0);
+		PPM_capture_input_2 : in std_logic_vector (31 downto 0);
+		PPM_capture_input_3 : in std_logic_vector (31 downto 0);
+		PPM_capture_input_4 : in std_logic_vector (31 downto 0);
+		PPM_capture_input_5 : in std_logic_vector (31 downto 0);
+		PPM_capture_done : in std_logic;
+		
+		------------------
+		-- User Outputs --
+		------------------
+		PPM_output : out std_logic;
+		PPM_generator_output_0 : out std_logic_vector (31 downto 0);
+		PPM_generator_output_1 : out std_logic_vector (31 downto 0);
+		PPM_generator_output_2 : out std_logic_vector (31 downto 0);
+		PPM_generator_output_3 : out std_logic_vector (31 downto 0);
+		PPM_generator_output_4 : out std_logic_vector (31 downto 0);
+		PPM_generator_output_5 : out std_logic_vector (31 downto 0);
         
-        PPM_Input_out : out STD_LOGIC;
-        out_channel_1_in : in STD_LOGIC_VECTOR (31 downto 0);
-        out_channel_2_in : in STD_LOGIC_VECTOR (31 downto 0);
-        out_channel_3_in : in STD_LOGIC_VECTOR (31 downto 0);
-        out_channel_4_in : in STD_LOGIC_VECTOR (31 downto 0);
-        out_channel_5_in : in STD_LOGIC_VECTOR (31 downto 0);
-        out_channel_6_in : in STD_LOGIC_VECTOR (31 downto 0);
-        probe_state : in std_logic_vector (2 downto 0);
-        probe_done : in std_logic;
 		-- User ports ends
 		-- Do not modify the ports beyond this line
 
@@ -149,7 +161,22 @@ architecture arch_imp of PPM_v1_0_S00_AXI is
 
 begin
 	-- I/O Connections assignments
-
+    
+    -- Infer mux select slv_reg0 
+    PPM_output <=  PPM_generator_input when slv_reg0(0) = '1' else PPM_input_controller;
+    
+    -- Captured PPM input to software
+    slv_reg10 <= PPM_capture_input_0;
+    slv_reg11 <= PPM_capture_input_1;
+    slv_reg12 <= PPM_capture_input_2;
+    slv_reg13 <= PPM_capture_input_3;
+    slv_reg14 <= PPM_capture_input_4;
+    slv_reg15 <= PPM_capture_input_5;
+    
+    -- RTL done signal relay
+    slv_reg3(0) <= PPM_generator_done;
+    slv_reg4(0) <= PPM_capture_done;
+    
 	S_AXI_AWREADY	<= axi_awready;
 	S_AXI_WREADY	<= axi_wready;
 	S_AXI_BRESP	<= axi_bresp;
@@ -507,10 +534,10 @@ begin
 	        reg_data_out <= slv_reg1;
 	      when b"0010" =>
 	        reg_data_out <= slv_reg2;
-	      when b"0011" =>
-	        reg_data_out <= slv_reg3;
-	      when b"0100" =>
-	        reg_data_out <= slv_reg4;
+--	      when b"0011" =>
+--	        reg_data_out <= slv_reg3;
+--	      when b"0100" =>
+--	        reg_data_out <= slv_reg4;
 	      when b"0101" =>
 	        reg_data_out <= slv_reg5;
 	      when b"0110" =>
@@ -521,18 +548,18 @@ begin
 	        reg_data_out <= slv_reg8;
 	      when b"1001" =>
 	        reg_data_out <= slv_reg9;
-	      when b"1010" =>
-	        reg_data_out <= slv_reg10;
-	      when b"1011" =>
-	        reg_data_out <= slv_reg11;
-	      when b"1100" =>
-	        reg_data_out <= slv_reg12;
-	      when b"1101" =>
-	        reg_data_out <= slv_reg13;
-	      when b"1110" =>
-	        reg_data_out <= slv_reg14;
-	      when b"1111" =>
-	        reg_data_out <= slv_reg15;
+--	      when b"1010" =>
+--	        reg_data_out <= slv_reg10;
+--	      when b"1011" =>
+--	        reg_data_out <= slv_reg11;
+--	      when b"1100" =>
+--	        reg_data_out <= slv_reg12;
+--	      when b"1101" =>
+--	        reg_data_out <= slv_reg13;
+--	      when b"1110" =>
+--	        reg_data_out <= slv_reg14;
+--	      when b"1111" =>
+--	        reg_data_out <= slv_reg15;
 	      when others =>
 	        reg_data_out  <= (others => '0');
 	    end case;

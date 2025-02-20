@@ -123,7 +123,7 @@ begin
     -- PPM capture --
     -----------------
     -- comb_proc: process(PS,PPM_Input,temp_output,counter,validate_counter) --
-    comb_proc: process (PS, high_valid, low_valid, PPM_Input)
+    comb_proc: process (PS, high_valid, low_valid, PPM_Input, channel_counter)
     begin 
 
         -- Defaults
