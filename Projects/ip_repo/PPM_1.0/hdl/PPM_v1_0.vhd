@@ -99,6 +99,7 @@ architecture arch_imp of PPM_v1_0 is
 		PPM_capture_input_4 : in std_logic_vector (31 downto 0);
 		PPM_capture_input_5 : in std_logic_vector (31 downto 0);
 		PPM_capture_done : in std_logic;
+		PPM_capture_channel_counter : in std_logic_vector (2 downto 0);
 		
 		------------------
 		-- User Outputs --
@@ -156,7 +157,9 @@ architecture arch_imp of PPM_v1_0 is
                out_channel_6 : out STD_LOGIC_VECTOR (31 downto 0);
     
                probe_state : out std_logic_vector (2 downto 0);
-               probe_done : out std_logic 
+               probe_done : out std_logic;
+               
+               channel_counter_out : out std_logic_vector (2 downto 0)
         );
     end component;
     
@@ -177,6 +180,7 @@ architecture arch_imp of PPM_v1_0 is
     signal PPM_capture_input_4 : std_logic_vector (31 downto 0);
     signal PPM_capture_input_5 : std_logic_vector (31 downto 0);
     signal PPM_capture_done : std_logic;
+    signal PPM_capture_channel_counter : std_logic_vector (2 downto 0);
     
     -------------------------
     -- User output signals --
@@ -208,6 +212,7 @@ PPM_v1_0_S00_AXI_inst : PPM_v1_0_S00_AXI
 	    PPM_capture_input_4 => PPM_capture_input_4,
 	    PPM_capture_input_5 => PPM_capture_input_5,
 	    PPM_capture_done => PPM_capture_done,
+	    PPM_capture_channel_counter => PPM_capture_channel_counter,
 	    
 	    PPM_output => PPM_output,                           -- Assigned to TOP output port, not signal
 	    PPM_generator_output_0 => PPM_generator_output_0, 
@@ -269,7 +274,8 @@ PPM_v1_0_S00_AXI_inst : PPM_v1_0_S00_AXI
            out_channel_6 => PPM_capture_input_5,
 
            probe_state => capture_state_probe,
-           probe_done => PPM_capture_done
+           probe_done => PPM_capture_done,
+           channel_counter_out => PPM_capture_channel_counter
         );
         
     -- Passing internal signals to TOP probe outputs

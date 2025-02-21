@@ -23,14 +23,16 @@ entity Capture_PPM_simp is
            out_channel_6 : out STD_LOGIC_VECTOR (31 downto 0);
 
            probe_state : out std_logic_vector (2 downto 0);
-           probe_done : out std_logic
+           probe_done : out std_logic;
+           channel_counter_out : out std_logic_vector (2 downto 0)
+
            );
 end Capture_PPM_simp;
 
 architecture Behavioral of Capture_PPM_simp is
 
 -- Updated in PPM_capture FSM, keeps track of capture channels --
-signal channel_counter : unsigned (2 downto 0);
+signal channel_counter : std_logic_vector (2 downto 0);
 
 -- Asynch counter reset from PPM capture process --
 signal clk_counter_reset : std_logic;
@@ -39,7 +41,7 @@ signal clk_counter_reset : std_logic;
 signal start_count : std_logic;
 
 -- Temporary output array, acts likes a buffer for STORE state --
-signal temp_output : unsigned (31 downto 0);
+signal temp_output : std_logic_vector (31 downto 0);
 
 -- Defines states -- 
 type state_type is (IDLE,INTERCHANNEL,MEASURE,STORE);
@@ -92,7 +94,7 @@ begin
             else 
                 -- Iterate count for measure --
                 if (start_count = '1') then
-                    temp_output <= temp_output + 1;
+                    temp_output <= std_logic_vector(unsigned(temp_output) + 1);
                 end if;
 
                 if (clk_counter_reset = '1') then
@@ -176,13 +178,13 @@ begin
                 iterate_count <= '0';
 
                 -- First channel of frame found, reset output channels
-                if (channel_counter = 0) then
+                if (channel_counter = "000") then
                     out_reg_reset <= '1';
                 end if;
 
                 if (high_valid = '1') then
                     -- Frame complete, return to IDLE and reset channel counter
-                    if (channel_counter >= 6) then
+                    if (channel_counter >= "110") then
                         count_reg_reset <= '1';
                         NS <= IDLE; 
                     -- Channel found, start count
@@ -207,7 +209,7 @@ begin
                 out_reg_reset <= '0';
                 iterate_count <= '0';
                 clk_counter_reset <= '0';
-                start_count <= '0';
+                start_count <= '1';
                 
                 if (low_valid = '1') then
                     start_count <= '0';
@@ -250,7 +252,7 @@ begin
                 channel_counter <= (others => '0');
             else 
                 if (iterate_count = '1') then
-                    channel_counter <= channel_counter + 1;
+                    channel_counter <= std_logic_vector(unsigned(channel_counter) + 1);
                 end if;
             end if;
 
@@ -263,18 +265,18 @@ begin
                 out_channel_5 <= (others => '0');
                 out_channel_6 <= (others => '0');
             elsif (send_output = '1') then 
-                if (channel_counter = 1) then
-                    out_channel_1 <= std_logic_vector(temp_output);
-                elsif (channel_counter = 2) then 
-                    out_channel_2 <= std_logic_vector(temp_output);
-                elsif (channel_counter = 3) then 
-                    out_channel_3 <= std_logic_vector(temp_output);
-                elsif (channel_counter = 4) then 
-                    out_channel_4 <= std_logic_vector(temp_output);
-                elsif (channel_counter = 5) then 
-                    out_channel_5 <= std_logic_vector(temp_output);
-                elsif (channel_counter = 6) then 
-                    out_channel_6 <= std_logic_vector(temp_output);
+                if (channel_counter = "001") then
+                    out_channel_1 <= temp_output;
+                elsif (channel_counter = "010") then 
+                    out_channel_2 <= temp_output;
+                elsif (channel_counter = "011") then 
+                    out_channel_3 <= temp_output;
+                elsif (channel_counter = "100") then 
+                    out_channel_4 <= temp_output;
+                elsif (channel_counter = "101") then 
+                    out_channel_5 <= temp_output;
+                elsif (channel_counter = "110") then 
+                    out_channel_6 <= temp_output;
                 end if;
             -- else 
             --     out_channel_1 <= out_channel_1;
