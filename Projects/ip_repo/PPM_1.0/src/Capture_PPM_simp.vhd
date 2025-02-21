@@ -70,7 +70,7 @@ begin
     sync_proc: process(CLK,NS,CLR)
     begin
         if (CLK = '1' and CLK'event) then
-            if (CLR = '1') then
+            if (CLR = '0') then
                 PS <= IDLE;
             else 
                 PS <= NS;
@@ -86,7 +86,7 @@ begin
         if (CLK = '1' and CLK'event) then
             
             -- Reset --
-            if (CLR = '1') then
+            if (CLR = '0') then
                 temp_output <= (others => '0');
                 low_valid <= '0';
                 high_valid <= '0';
@@ -248,7 +248,7 @@ begin
         if (CLK = '1' and CLK'event) then
             
             -- Control channel counter
-            if (CLR = '1' or count_reg_reset = '1') then
+            if (CLR = '0' or count_reg_reset = '1') then
                 channel_counter <= (others => '0');
             else 
                 if (iterate_count = '1') then
@@ -257,7 +257,7 @@ begin
             end if;
 
             -- Control output registers
-            if (CLR = '1' or out_reg_reset = '1') then
+            if (CLR = '0' or out_reg_reset = '1') then
                 out_channel_1 <= (others => '0');
                 out_channel_2 <= (others => '0');
                 out_channel_3 <= (others => '0');
@@ -302,6 +302,10 @@ begin
 
            probe_done <= done;
            probe_state <= state;
+		   
+		   channel_counter_out <= channel_counter;
+		   
+		   
         
         end if;
     end process reg_proc;

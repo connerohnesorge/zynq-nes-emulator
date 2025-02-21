@@ -27,7 +27,7 @@ begin
 
     process(CLK, RESET)
     begin
-        if RESET = '1' then
+        if RESET = '0' then
             PS <= IDLE;
         elsif rising_edge(CLK) then
             PS <= NS;
@@ -35,11 +35,11 @@ begin
     end process;
 
     -- Next State Logic
-    process(PS, cycle_counter, channel_index, RESET, pulse_widths)
+    process(PS, cycle_counter, channel_index,RESET)
     begin
         case PS is
             when IDLE =>
-                if RESET = '0' then
+                if RESET = '1' then
                     NS <= GAP_LOW; 
                else
                     NS <= IDLE;
@@ -67,7 +67,7 @@ begin
                 NS <= GAP_LOW;
 
             when FRAME_COMPLETE =>
---                if RESET = '1' then
+--                if RESET = '0' then
                     NS <= IDLE; 
 --               else
 --                    NS <= FRAME_COMPLETE;
