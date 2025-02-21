@@ -167,7 +167,7 @@ begin
             -- Waits for high_valid (to trigger measurement)
             -- Triggers start_count
             when INTERCHANNEL =>
-
+                count_reg_reset <= count_reg_reset;
                 send_output <= '0';
                 clk_counter_reset <= '0';
 
