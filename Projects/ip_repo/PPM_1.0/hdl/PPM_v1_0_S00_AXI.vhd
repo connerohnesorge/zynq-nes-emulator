@@ -196,8 +196,8 @@ begin
                 
                  -- RTL done signal relay
                 slv_reg3(0) <= PPM_generator_done;
---                slv_reg2(0) <= PPM_capture_done;
-                slv_reg2(2 downto 0) <= PPM_capture_channel_counter;
+                slv_reg2(0) <= PPM_capture_done;
+--                slv_reg2(2 downto 0) <= PPM_capture_channel_counter;
 
                 PPM_generator_output_0 <= slv_reg4; 
                 PPM_generator_output_1 <= slv_reg5;
