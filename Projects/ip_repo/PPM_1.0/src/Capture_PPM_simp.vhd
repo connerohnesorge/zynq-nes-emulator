@@ -44,7 +44,7 @@ signal start_count : std_logic;
 signal temp_output : std_logic_vector (31 downto 0);
 
 -- Defines states -- 
-type state_type is (IDLE,INTERCHANNEL,MEASURE,STORE);
+type state_type is (IDLE_DETECT,IDLE,INTERCHANNEL,MEASURE,STORE);
 signal PS,NS : state_type;
 
 signal ppm_shift : std_logic_vector (19 downto 0);
@@ -60,6 +60,10 @@ signal send_output : std_logic;
 signal count_reg_reset : std_logic; 
 signal iterate_count : std_logic;
 
+signal idle_counter : std_logic_vector (20 downto 0);
+
+signal idle_detected : std_logic;
+
 begin
 
 -- Processes --
@@ -71,7 +75,7 @@ begin
     begin
         if (CLK = '1' and CLK'event) then
             if (CLR = '0') then
-                PS <= IDLE;
+                PS <= IDLE_DETECT;
             else 
                 PS <= NS;
             end if;
@@ -91,6 +95,8 @@ begin
                 low_valid <= '0';
                 high_valid <= '0';
                 ppm_shift <= (others => '1');
+                idle_counter <= (others => '0');
+				idle_detected <= '0';
             else 
                 -- Iterate count for measure --
                 if (start_count = '1') then
@@ -115,7 +121,21 @@ begin
                 else
                     high_valid <= '0';
                 end if;        
-
+                
+                if (high_valid = '1') then
+                    idle_counter <= std_logic_vector(unsigned(idle_counter) + 1);
+                end if; 
+                
+                if (low_valid = '1') then
+                    idle_counter <= (others => '0');
+                end if; 
+				
+				if (unsigned(idle_counter) >= to_unsigned(500000, 21)) then
+					idle_detected <= '1';
+				else 
+					idle_detected <= '0';
+				end if;
+                
             end if;
 
         end if;
@@ -125,7 +145,7 @@ begin
     -- PPM capture --
     -----------------
     -- comb_proc: process(PS,PPM_Input,temp_output,counter,validate_counter) --
-    comb_proc: process (PS, high_valid, low_valid, PPM_Input, channel_counter)
+    comb_proc: process (PS, high_valid, low_valid, PPM_Input, channel_counter, idle_counter, idle_detected)
     begin 
 
         -- Defaults
@@ -135,11 +155,28 @@ begin
         -- done <= '0';
         -- iterate_count <= '0';
         -- start_count <= '0';
-        NS <= IDLE;
 
 
         case PS is 
-
+            
+            when IDLE_DETECT =>
+			
+				out_reg_reset <= '0';
+                count_reg_reset <= '0';
+                send_output <= '0';
+                clk_counter_reset <= '0';
+                start_count <= '0';
+                iterate_count <= '0';
+                done <= '1';
+                
+                if (idle_detected = '1') then
+                    NS <= IDLE;
+                else 
+                    NS <= IDLE_DETECT;
+                end if;
+                
+                
+            
             -- IDLE --
             -- Indicates captured PPM_Input currently has no input
             -- Disables clk_counter_reset
@@ -186,7 +223,7 @@ begin
                     -- Frame complete, return to IDLE and reset channel counter
                     if (channel_counter >= "110") then
                         count_reg_reset <= '1';
-                        NS <= IDLE; 
+                        NS <= IDLE_DETECT; 
                     -- Channel found, start count
                     else 
                         start_count <= '1';
@@ -234,7 +271,14 @@ begin
             -- DEFAULT --
             -- Default into IDLE
             when others =>
-                NS <= IDLE;
+                NS <= IDLE_DETECT;
+				out_reg_reset <= '0';
+                count_reg_reset <= '0';
+                send_output <= '0';
+                clk_counter_reset <= '0';
+                start_count <= '0';
+                iterate_count <= '0';
+                done <= '1';
         
         end case;
                 
@@ -296,6 +340,8 @@ begin
                 state <= "011";
             elsif (PS = STORE) then
                 state <= "100";
+			elsif (PS = IDLE_DETECT) then
+				state <= "101";
             else 
                 state <= "000";
             end if;
