@@ -3,7 +3,7 @@
 <!--                                                         -->
 <!-- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="49" Path="C:/Users/neastbur/cpre488/mps/MP-0/ip_repo/edit_snes_controller_reader_v1_0.xpr">
+<Project Version="7" Minor="49" Path="C:/Users/neastbur/mps/MP-0/ip_repo/edit_snes_controller_reader_v1_0.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="24bb0858d4e54a0d9ab521540b0eba79"/>
@@ -29,7 +29,7 @@
     <Option Name="ActiveSimSet" Val="sim_1"/>
     <Option Name="DefaultLib" Val="xil_defaultlib"/>
     <Option Name="ProjectType" Val="Default"/>
-    <Option Name="IPRepoPath" Val="$PPRDIR/../../../../../../users/neastbur/cpre488/mps/mp-0/SNES"/>
+    <Option Name="IPRepoPath" Val="$PPRDIR/../../../../../../users/neastbur/mps/mp-0/SNES"/>
     <Option Name="IPRepoPath" Val="$PPRDIR/."/>
     <Option Name="IPRepoPath" Val="$PPRDIR/snes_controller_reader_1.0"/>
     <Option Name="IPOutputRepo" Val="$PCACHEDIR/ip"/>
@@ -113,7 +113,7 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../../../../users/neastbur/cpre488/mps/mp-0/SNES/component.xml">
+      <File Path="$PPRDIR/../../../../../../users/neastbur/mps/mp-0/SNES/component.xml">
         <FileInfo SFType="IPXACT"/>
       </File>
       <Config>

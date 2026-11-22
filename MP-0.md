@@ -1,5 +1,3 @@
-# **CprE 488 – Embedded Systems Design**
-
 # **MP-0: Platform Introduction**
 
 **Assigned:** Monday of Week 2 **Due:** Monday of Week 4 **Points:** 100 + bonus for any creative extensions to the main design
@@ -23,7 +21,7 @@ The main tool we will be using this semester for FPGA design and implementation 
 - **Vitis:** Is a software development tool that can be called from VIVADO. It is used for C/C++ embedded software application and verification.
 - **Software and Hardware IP:** Various embedded / soft IP for Xilinx embedded processors and peripherals; compilers, drivers and libraries for embedded software development; documentation and sample projects.
 
-**2) Getting Started.** First, create a new directory for this class and lab: <SOME-PATH>\cpre488\Labs\MP-0
+**2) Getting Started.** First, create a new directory for this class and lab: <SOME-PATH>\Labs\MP-0
 
 We are using Cybox (or course website) to distribute the MPs: Download the provided MP0 starting directory structure from the link provided.
 
@@ -56,7 +54,7 @@ Step 1 modifications: Start the Vivado IDE and Create a Project
 
 i) skip instruction 1.
 
-- ii) instruction 4: set project location to the folder you created (<SOME-PATH>\cpre488\Labs\MP-0)
+- ii) instruction 4: set project location to the folder you created (<SOME-PATH>\Labs\MP-0)
 - iii) instruction 6: set "Target language" to VHDL
 - iv) instruction 8b: From the Vendor drop-down list, select em.avnet.com
 - v) instruction 8c: Choose ZedBoard

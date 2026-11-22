@@ -4,7 +4,7 @@
 -- Date        : Mon Feb 10 16:01:07 2025
 -- Host        : CO2041-09 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
---               c:/Users/neastbur/cpre488/mps/MP-0/MP-0/MP-0.srcs/sources_1/bd/IP/ip/IP_axi_gpio_0_3/IP_axi_gpio_0_3_sim_netlist.vhdl
+--               c:/Users/neastbur/mps/MP-0/MP-0/MP-0.srcs/sources_1/bd/IP/ip/IP_axi_gpio_0_3/IP_axi_gpio_0_3_sim_netlist.vhdl
 -- Design      : IP_axi_gpio_0_3
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.

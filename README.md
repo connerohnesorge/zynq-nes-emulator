@@ -1,4 +1,4 @@
-# cpre488
+# zynq-nes-emulator
 
 ## Introduction
 

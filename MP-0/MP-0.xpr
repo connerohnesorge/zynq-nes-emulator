@@ -3,7 +3,7 @@
 <!--                                                         -->
 <!-- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="49" Path="C:/Users/neastbur/cpre488/mps/MP-0/MP-0/MP-0.xpr">
+<Project Version="7" Minor="49" Path="C:/Users/neastbur/mps/MP-0/MP-0/MP-0.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="dd2247510b4446cf801f375c4a9db617"/>

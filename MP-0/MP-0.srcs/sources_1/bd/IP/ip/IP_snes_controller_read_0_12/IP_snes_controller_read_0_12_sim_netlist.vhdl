@@ -4,7 +4,7 @@
 -- Date        : Mon Feb 10 17:14:45 2025
 -- Host        : CO2041-09 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
---               c:/Users/neastbur/cpre488/mps/MP-0/MP-0/MP-0.srcs/sources_1/bd/IP/ip/IP_snes_controller_read_0_12/IP_snes_controller_read_0_12_sim_netlist.vhdl
+--               c:/Users/neastbur/mps/MP-0/MP-0/MP-0.srcs/sources_1/bd/IP/ip/IP_snes_controller_read_0_12/IP_snes_controller_read_0_12_sim_netlist.vhdl
 -- Design      : IP_snes_controller_read_0_12
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.

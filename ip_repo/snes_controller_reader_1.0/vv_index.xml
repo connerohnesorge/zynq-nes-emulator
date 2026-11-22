@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <Index Version="1" Minor="0">
-	<Repository value="c:/Users/neastbur/cpre488/mps/MP-0/ip_repo/snes_controller_reader_1.0">
+	<Repository value="c:/Users/neastbur/mps/MP-0/ip_repo/snes_controller_reader_1.0">
 	</Repository>
 	<IP>
 		<VLNV value="iastate.edu:user:snes_controller_reader:1.0">
