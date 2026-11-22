@@ -801,19 +801,19 @@
       </xilinx:upgrades>
       <xilinx:coreCreationDateTime>2025-02-10T23:11:20Z</xilinx:coreCreationDateTime>
       <xilinx:tags>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@a7a8ced_ARCHIVE_LOCATION">c:/users/neastbur/cpre488/mps/mp-0/SNES</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@2eae6d77_ARCHIVE_LOCATION">c:/users/neastbur/cpre488/mps/mp-0/SNES</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@53affa48_ARCHIVE_LOCATION">c:/users/neastbur/cpre488/mps/mp-0/SNES</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@3e5ae6a2_ARCHIVE_LOCATION">c:/users/neastbur/cpre488/mps/mp-0/SNES</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@8e776fa_ARCHIVE_LOCATION">c:/users/neastbur/cpre488/mps/mp-0/SNES</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@198dedea_ARCHIVE_LOCATION">c:/users/neastbur/cpre488/mps/mp-0/SNES</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@2ecb5024_ARCHIVE_LOCATION">c:/users/neastbur/cpre488/mps/mp-0/SNES</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@6c1c5b6b_ARCHIVE_LOCATION">c:/users/neastbur/cpre488/mps/mp-0/SNES</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@cdbd628_ARCHIVE_LOCATION">c:/users/neastbur/cpre488/mps/mp-0/SNES</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@6257c9dd_ARCHIVE_LOCATION">c:/users/neastbur/cpre488/mps/mp-0/SNES</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@349da641_ARCHIVE_LOCATION">c:/users/neastbur/cpre488/mps/mp-0/SNES</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@5ccaff22_ARCHIVE_LOCATION">c:/users/neastbur/cpre488/mps/mp-0/SNES</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@cbac77e_ARCHIVE_LOCATION">c:/users/neastbur/cpre488/mps/mp-0/SNES</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@a7a8ced_ARCHIVE_LOCATION">c:/users/neastbur/mps/mp-0/SNES</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2eae6d77_ARCHIVE_LOCATION">c:/users/neastbur/mps/mp-0/SNES</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@53affa48_ARCHIVE_LOCATION">c:/users/neastbur/mps/mp-0/SNES</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3e5ae6a2_ARCHIVE_LOCATION">c:/users/neastbur/mps/mp-0/SNES</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@8e776fa_ARCHIVE_LOCATION">c:/users/neastbur/mps/mp-0/SNES</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@198dedea_ARCHIVE_LOCATION">c:/users/neastbur/mps/mp-0/SNES</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2ecb5024_ARCHIVE_LOCATION">c:/users/neastbur/mps/mp-0/SNES</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6c1c5b6b_ARCHIVE_LOCATION">c:/users/neastbur/mps/mp-0/SNES</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@cdbd628_ARCHIVE_LOCATION">c:/users/neastbur/mps/mp-0/SNES</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6257c9dd_ARCHIVE_LOCATION">c:/users/neastbur/mps/mp-0/SNES</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@349da641_ARCHIVE_LOCATION">c:/users/neastbur/mps/mp-0/SNES</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5ccaff22_ARCHIVE_LOCATION">c:/users/neastbur/mps/mp-0/SNES</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@cbac77e_ARCHIVE_LOCATION">c:/users/neastbur/mps/mp-0/SNES</xilinx:tag>
       </xilinx:tags>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>

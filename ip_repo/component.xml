@@ -794,12 +794,12 @@
       <xilinx:coreRevision>2</xilinx:coreRevision>
       <xilinx:coreCreationDateTime>2025-02-10T06:37:45Z</xilinx:coreCreationDateTime>
       <xilinx:tags>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@4be6fe30_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488/mps/MP-0/ip_repo</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@cacf750_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488/mps/MP-0/ip_repo</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@5821ce7f_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488/mps/MP-0/ip_repo</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@26f3be1f_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488/mps/MP-0/ip_repo</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@6cfa845a_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488/mps/MP-0/ip_repo</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@26f78a78_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488/mps/MP-0/ip_repo</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4be6fe30_ARCHIVE_LOCATION">c:/Users/neastbur/mps/MP-0/ip_repo</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@cacf750_ARCHIVE_LOCATION">c:/Users/neastbur/mps/MP-0/ip_repo</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5821ce7f_ARCHIVE_LOCATION">c:/Users/neastbur/mps/MP-0/ip_repo</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@26f3be1f_ARCHIVE_LOCATION">c:/Users/neastbur/mps/MP-0/ip_repo</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6cfa845a_ARCHIVE_LOCATION">c:/Users/neastbur/mps/MP-0/ip_repo</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@26f78a78_ARCHIVE_LOCATION">c:/Users/neastbur/mps/MP-0/ip_repo</xilinx:tag>
       </xilinx:tags>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>

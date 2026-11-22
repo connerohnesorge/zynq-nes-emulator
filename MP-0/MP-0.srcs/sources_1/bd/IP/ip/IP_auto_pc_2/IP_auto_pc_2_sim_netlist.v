@@ -4,7 +4,7 @@
 // Date        : Mon Feb 10 18:41:33 2025
 // Host        : CO2041-09 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
-//               c:/Users/neastbur/cpre488/mps/MP-0/MP-0/MP-0.srcs/sources_1/bd/IP/ip/IP_auto_pc_2/IP_auto_pc_2_sim_netlist.v
+//               c:/Users/neastbur/mps/MP-0/MP-0/MP-0.srcs/sources_1/bd/IP/ip/IP_auto_pc_2/IP_auto_pc_2_sim_netlist.v
 // Design      : IP_auto_pc_2
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
